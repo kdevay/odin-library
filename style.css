@@ -66,10 +66,11 @@ button{
 #popup { 
     background-color: rgb(100, 127, 121);
     color: black;
-    padding: 40px;
-    width: 60vw;
+    padding: 10px;
+    width: 45vw;
+    margin: 6vh;
     border-radius: 8px;
-    box-shadow: 4px 4px 8px 1px rgb(8, 8, 8);
+    box-shadow: 10px 9px 14px 7px rgb(8 8 8);
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -201,3 +202,15 @@ button{
     justify-content: space-between;
 }
 
+.closeCont {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#close {
+    background-color: rgb(100, 127, 121);
+    width: 30px;
+    font-weight: 800;
+    font-size: 20px;
+}

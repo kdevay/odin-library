@@ -28,6 +28,36 @@ const popup = document.getElementById('popup-shadow');
 popup.style.display = 'none'
 const updateButton = document.getElementById('update_book')
 updateButton.addEventListener('click', updateBook);
+const deleteButton = document.getElementById('delete_book')
+deleteButton.addEventListener('click', deleteBook);
+const closeButton = document.getElementById('close');  
+closeButton.addEventListener('click', closePopup)
+
+// Close popup window
+function closePopup() {
+    // Hide popup
+    popup.style.display = 'none'
+}
+
+// Delete book tile
+function deleteBook(e) {
+    // Prevent form submission
+    e.preventDefault()
+
+    // Hide popup
+    popup.style.display = 'none'
+
+    // Get book index from button data_id
+    let id = e.target.getAttribute('data_id');
+
+    // Delete book object from library
+    library.splice(id, 1);
+
+    // Delete book tile from html
+    let tile = document.getElementById('tile' + id);
+    tile.remove()
+
+}
 
 // Update book tile
 function updateBook(e) {
@@ -39,29 +69,29 @@ function updateBook(e) {
     let fauthor = document.getElementById('edit_author').value;
     let fpages = document.getElementById('edit_pages').value;
     let fgenre = document.getElementById("edit_genre").value;
-    let status = document.getElementById("edit_status").value;
+    let fread = document.getElementById("edit_read").checked;
+    let funread = document.getElementById("edit_unread").checked;
 
-    console.log('status', status);
-
-    // // check read status
-    // if (document.getElementById('edit_unread').checked) {
-    //     status = 'unread';
-    // } else {
-    //     status = 'read';
-    // }
-
+    console.log('read', fread);
+    console.log('unread', funread);
     // Get book index from button data_id
-    let id = updateButton.getAttribute('data_id');
+    let id = e.target.getAttribute('data_id');
 
     // Apply form changes to book
-    console.log("library[id]: ", library[id]);
-    console.log('library: ', library);
-    console.log("id: ", id);
     library[id].title = ftitle;
     library[id].author = fauthor;
     library[id].pages = fpages;
     library[id].genre = fgenre;
-    library[id].hasRead = status;
+
+    // check read status
+    let statusText;
+    if (fread) {
+        library[id].hasRead = true;
+        statusText = 'Read';
+    } else {
+        library[id].hasRead = false;
+        statusText = 'Unread';
+    }
 
     // Apply form changes to tile
     let title = document.getElementById('tTitle' + id);
@@ -72,13 +102,15 @@ function updateBook(e) {
     pages.textContent = 'Pages: ' + fpages;
     let genre = document.getElementById('tGenre' + id);
     genre.textContent = 'Genre: ' + fgenre;
+    let status = document.getElementById('tStatus' + id);
+    status.textContent = 'Status: ' + statusText;
 
     // Hide popup
     popup.style.display = 'none'
 }
 
 
-// Edit library tile 
+// Display edit popup
 function editBook(e) {
     // Get tile id from event target
     let tileId = e.target.getAttribute('id');
@@ -86,14 +118,12 @@ function editBook(e) {
 
     // Fill form inputs from library dict
     let title = document.getElementById('edit_title');
-    title.textContent = 'Title: ' + library[tileId].title;
+    title.value = library[tileId].title;
     let author = document.getElementById('edit_author');
-    author.textContent = 'Author: ' + library[tileId].author;
+    author.value = library[tileId].author;
     let pages = document.getElementById('edit_pages');
-    pages.textContent = 'Pages: ' + library[tileId].pages;
-    console.log("library[tileId].genre; ", library[tileId].genre);
-    let genre = document.getElementById('edit_' + library
-    [tileId].genre);
+    pages.value = library[tileId].pages;
+    let genre = document.getElementById('edit_' + library[tileId].genre);
     genre.setAttribute('checked', true);
 
     let status;
@@ -104,8 +134,9 @@ function editBook(e) {
     }
     status.setAttribute('checked', true);
 
-    // add tile id to update button 
+    // add tile id to update & delete buttons
     updateButton.setAttribute('data_id', tileId);
+    deleteButton.setAttribute('data_id', tileId);
 
     // Display popup
     popup.style.display = 'flex';
@@ -144,13 +175,14 @@ function createBookTile (counter) {
     tile.appendChild(radioContainer);
 
     // Status label
-    let status = document.createElement('p');
-    status.setAttribute('id', 'status' + counter);
+    let tStatus = document.createElement('p');
+    tStatus.setAttribute('id', 'tStatus' + counter);
     if (library[counter].hasRead ) {
-        status.textContent = 'Status: Read';
+        tStatus.textContent = 'Status: Read';
+    } else {
+        tStatus.textContent = 'Status: Unread';
     }
-    status.textContent = 'Status: Unread';
-    radioContainer.appendChild(status);
+    radioContainer.appendChild(tStatus);
 
     // Edit button
     let editButton = document.createElement('button');
