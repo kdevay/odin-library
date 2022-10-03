@@ -17,11 +17,22 @@ hr {
     background-color: rgb(212, 207, 200);
 }
 
+input,
+select {
+    height: 20px;
+}
+
 button{
     width: 80px;
     height: 30px;
     border-radius: 8px;
     border: none;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
 }
 
 /* Layer 1 */
@@ -67,7 +78,7 @@ button{
     background-color: rgb(100, 127, 121);
     color: black;
     padding: 10px;
-    width: 45vw;
+    width: 420px;
     margin: 6vh;
     border-radius: 8px;
     box-shadow: 10px 9px 14px 7px rgb(8 8 8);
@@ -75,16 +86,16 @@ button{
     flex-direction: column;
     align-content: center;
     align-items: center;
-    gap: 10px;
 }
+
 
 #addbook { /* hide and reveal */
     background-color: rgb(51, 64, 61);
     color: white;
-    padding: 10px;
-    width: 30vw;
+    padding: 20px;
+    width: 335px;
     border-radius: 8px;
-    box-shadow: 4px 4px 8px 1px rgb(8, 8, 8);
+    box-shadow: 4px 4px 8px 1px rgb(8 8 8);
     display: none;
     /* display: flex; */
     flex-direction: column;
@@ -93,15 +104,29 @@ button{
     gap: 10px;
 }
 
+
+
 #reveal { /* hide and reveal */
-    background-color: white;
-    color: black;
+    background-color: rgb(27, 26, 26);
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    position: relative;
+    top: -8vh;
+    left: 40%;
 }
 
-/* #header {
-    grid-row-start: 4;
-    grid-row-end; 5;
-} */
+#reveal:hover {
+    background-color:  rgb(40, 43, 43);
+    cursor: pointer;
+}
+
+/* 52 x 48 wxl */
+#bookIcon { 
+    width: 41.6px;
+    height: 38.4px;
+} 
+
 
 #books {
     width: 90%;
@@ -114,13 +139,21 @@ button{
 
 /* layer 3 */
 .addbook {
-    width: 20vw;
+    width: 275px;
+    margin: 10px 0;
     display: grid;
-    grid-template: 4fr 1fr 1fr/ 1fr 1fr;
-    gap: 5px;
+    grid-template: 1fr / 55px 280px;
     justify-content: center;
     align-content: center;
     justify-items: center;
+    padding: 20px;
+}
+
+#delUp{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 
 .b-button { /* hide and reveal */
@@ -154,23 +187,64 @@ button{
     grid-column-start: 1;
     grid-column-end: 2;
     display: grid;
-    grid-template: repeat(4, 1fr) / 1fr;
-    gap: 5px;
-    justify-items: end;
+    grid-template: repeat(5, 1fr) / 1fr;
+    gap: 10px;
+    justify-items: start;
     align-items: center;
+    width: 50px;
 }
 
 .inputs {
     grid-column-start: 2;
     grid-column-end: 3;
     display: grid;
-    grid-template: repeat(4, 1fr) / 1fr;
-    gap: 5px;
+    grid-template: repeat(5, 1fr) / 1fr;
+    align-items: center;
+    gap: 10px;
 }
 
-.radio,
+.inputBoxes{
+    height: 20px;
+    width: 265px;
+}
+
+
+#edit_title,
+#title {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+#edit_author,
+#author {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+#edit_pages,
+#pages {
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+#edit_genre,
+#genre {
+    height: 25px;
+    width: 269px;
+    grid-row-start: 4;
+    grid-row-end: 5;
+}
+
+#popRadio,
+#radio {
+    height:20px;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+
 #submit {
-    grid-column-start: 1;
+    grid-column-start: 2;
     grid-column-end: 3;
     /* grid-row-start: 2;
     grid-row-end: 3; */
@@ -214,3 +288,16 @@ button{
     font-weight: 800;
     font-size: 20px;
 }
+
+#close:hover {
+    background-color: rgb(61, 69, 67);
+}
+
+#editHead {
+    width: 331px;
+    padding: 5px 0 0 20px;
+}
+/* 
+water  * 100 = hydration %       1 3/4 c * 100 =
+flour                            5     c
+ */
