@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" defer=""></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Personal Library</title>
+</head>
+<body>
+    <div id="popup-shadow" style="display: flex;">
+        <div id="popup">
+            <div> <button id="close">✕</button></div>
+            <form class="addbook">
+                <div class="labels">
+                    <label for="edit_title">Title:</label>
+                    <label for="edit_author">Author:</label>
+                    <label for="edit_pages">Pages:</label>
+                    <label for="edit_genre">Genre:</label>
+                </div>
+                <div class="inputs">
+                    <input type="text" id="edit_title" name="edit_title" required="">
+                    <input type="text" id="edit_author" name="edit_author" required="">
+                    <input type="number" id="edit_pages" name="edit_pages" required="" min="1" max="21,450">
+                    <select name="edit_genre" id="edit_genre" required="">
+                        <option id="edit_fiction" value="fiction" checked="true">Fiction</option>
+                        <option id="edit_horror" value="horror">Horror</option>
+                        <option id="edit_dystopian" value="dystopian">Dystopian</option>
+                        <option id="edit_fantasy" value="fantasy">Fantasy</option>
+                        <option id="edit_graphic" value="graphic">Graphic Novel</option>
+                        <option id="edit_mystery" value="mystery">Mystery</option>
+                        <option id="edit_romance" value="romance">Romance</option>
+                        <option id="edit_sci-fi" value="sci-fi">Sci-fi</option>
+                        
+                        <option id="edit_nonfiction" value="nonfiction">Nonfiction</option>
+                        <option id="edit_biography" value="biography">Biography</option>
+                        <option id="edit_history" value="history">History</option>
+                        <option id="edit_self-help" value="self-help">Self-Help</option>
+                        <option id="edit_travel" value="travel">Travel</option>
+                        <option id="edit_true-crime" value="true-crime">True Crime</option>
+                    </select> 
+                </div>
+                <div class="radio">
+                    <div>
+                        <label for="edit_read">Read</label>
+                        <input type="radio" id="edit_read" name="status" value="read">
+                    </div>
+                    <div>
+                        <label for="edit_unread">Unread</label>
+                        <input type="radio" id="edit_unread" name="status" value="unread" checked="true">
+                    </div>
+                </div>
+                <button id="update_book">update book</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="nav"><h1>Print is dead</h1></div>
+        <div id="addbook">
+            <h2>Add Book to Library</h2>
+            <form class="addbook">
+                <div class="labels">
+                    <label for="title">Title:</label>
+                    <label for="author">Author:</label>
+                    <label for="pages">Pages:</label>
+                    <label for="genre">Genre:</label>
+                </div>
+                <div class="inputs">
+                    <input type="text" id="title" name="title" required>
+                    <input type="text" id="author" name="author" required>
+                    <input type="number" id="pages" name="pages" required min="1" max="21,450">
+                    <select name="genre" id="genre">
+                        <option value="fiction">Fiction</option>
+                        <option value="horror">Horror</option>
+                        <option value="dystopian">Dystopian</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="graphic">Graphic Novel</option>
+                        <option value="mystery">Mystery</option>
+                        <option value="romance">Romance</option>
+                        <option value="sci-fi">Sci-fi</option>
+                        <hr>
+                        <option value="nonfiction">Nonfiction</option>
+                        <option value="biography">Biography</option>
+                        <option value="history">History</option>
+                        <option value="self-help">Self-Help</option>
+                        <option value="travel">Travel</option>
+                        <option value="true-crime">True Crime</option>
+                    </select> 
+                </div>
+                <div class="radio">
+                    <div>
+                        <label for="read">Read</label>
+                        <input type="radio" id="read" name="status" value="read"checked>
+                    </div>
+                    <div>
+                        <label for="unread">Unread</label>
+                        <input type="radio" id="unread" name="status" value="unread">
+                    </div>
+                </div>
+                <button id="submit">add book</button>
+            </form>
+        </div>
+
+        <button id="reveal">new book</button>
+
+        <h2 id="header">Library</h2>
+        <div id="books"></div>
+    </div>
+            <!-- <div class="book" data-id="0">
+                <p class="t-title">Title:</p>
+                <p class="t-author">Author:</p>
+                <p class="t-pages">Pages:</p>
+                <p class="t-genre">Genre:</p>
+                <div id="rad-butt">
+                    <p class="t-status">Status:</p>
+                    <div>
+                        <label for="r">Read</label>
+                        <input type="radio" id="r" name="status" value="read">
+                    </div>
+                    <div>
+                        <label for="u">Unread</label>
+                        <input type="radio" id="u" name="status" value="unread">
+                    </div>
+                </div> -->
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- <div class="book" data-id="0">
+    <p class="t-title">Title:</p>
+    <p class="t-author">Author:</p>
+    <p class="t-pages">Pages:</p>
+    <p class="t-genre">Genre:</p>
+    <p class="t-status">Status:</p>
+    <div class="b-button"><button id="change">change status</button></div>
+    <form id="update-form">
+        <div id="rad-butt">
+            <div>
+                <label for="r">Read</label>
+                <input type="radio" id="r" name="status" value="read">
+            </div>
+            <div>
+                <label for="u">Unread</label>
+                <input type="radio" id="u" name="status" value="unread">
+            </div>
+        </div>
+        <button type="submit" id="update">update</button>
+    </form>
+</div> -->
