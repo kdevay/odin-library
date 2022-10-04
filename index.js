@@ -6,6 +6,7 @@ function Book() {
     this.pages = 0;
     this.genre = "";
     this.hasRead = "";
+    this.deleted = false;
 };
 let bookCounter = 0;
 
@@ -51,7 +52,7 @@ function deleteBook(e) {
     let id = e.target.getAttribute('data_id');
 
     // Delete book object from library
-    library.splice(id, 1);
+    library[id].deleted = true;
 
     // Delete book tile from html
     let tile = document.getElementById('tile' + id);
