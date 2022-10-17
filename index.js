@@ -31,14 +31,9 @@ const updateButton = document.getElementById('update_book')
 updateButton.addEventListener('click', updateBook);
 const deleteButton = document.getElementById('delete_book')
 deleteButton.addEventListener('click', deleteBook);
-const closeButton = document.getElementById('close');  
-closeButton.addEventListener('click', closePopup)
+const closeButton = document.getElementById('close');
+closeButton.addEventListener('click', () => popup.style.display = 'none'); // Close popup window
 
-// Close popup window
-function closePopup() {
-    // Hide popup
-    popup.style.display = 'none'
-}
 
 // Delete book tile
 function deleteBook(e) {
@@ -57,7 +52,6 @@ function deleteBook(e) {
     // Delete book tile from html
     let tile = document.getElementById('tile' + id);
     tile.remove()
-
 }
 
 // Update book tile
