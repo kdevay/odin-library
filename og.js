@@ -10,20 +10,17 @@ function Book() {
 };
 let bookCounter = 0;
 
-
-
 // Import dom elements
 const addButton = document.getElementById("reveal");
 const newBookFormContainer = document.getElementById("addbook");
 const addBookButton = document.getElementById("submit");
 const libraryContainer = document.getElementById('books');
 
-// Import form inputs --> deleted in favor of dynamic creation
+// Import form inputs 
 const inputTitle = document.getElementById("title");
 const inputAuthor = document.getElementById("author");
 const inputPages = document.getElementById("pages");
 const inputGenre = document.getElementById("genre");
-
 
 // Import Popup
 const popup = document.getElementById('popup-shadow');
@@ -54,6 +51,7 @@ function deleteBook(e) {
     let tile = document.getElementById('tile' + id);
     tile.remove()
 }
+
 
 // Update book tile
 function updateBook(e) {
